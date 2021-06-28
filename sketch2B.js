@@ -3,8 +3,10 @@ var myCapture, // camera
 var synth = [];
 let words = [];
 let new_word = "";
+var word_displayed = true;
 var enter_button;
 var zoneLocation = 0;
+var clearButton;
 
 function initCaptureDevice() {
   try {
@@ -21,21 +23,41 @@ function initCaptureDevice() {
   }
 }
 
-// handles a new word entered in text box
-function displayWords() {
-  new_word = input.value();
-  
-  let numZoneLocations = words.length;
-    
-  zoneLocation = Math.floor(Math.random() * numZoneLocations); 
-  
-  words[zoneLocation].switchWord(new_word);
 
+function keyPressed() {
+  if (keyCode === ENTER) {
+    displayWords();
+  }
+  
+  if (keyCode === DELETE) {
+    clearInputField();
+  }
+}
+
+
+// handles a new word entered in text box
+function displayWords() {  
+    
+    new_word = input.value();
+
+    let numZoneLocations = words.length;
+
+    zoneLocation = Math.floor(Math.random() * numZoneLocations); 
+
+    words[zoneLocation].switchWord(new_word);
+  
+  
   //zoneLocation = zoneLocation + 1;
   
   //if (zoneLocation > words.length - 1) {
     //zoneLocation = 0; 
   //}
+}
+
+function clearInputField() {
+  
+    new_word = input.value('');
+  
 }
 
 function WordZone(x, y) {
@@ -59,9 +81,9 @@ function setup() {
   input = createInput();
   input.position(255, 375);
   
-  enter_button = createButton('enter');
-  enter_button.position(410, 375);
-  enter_button.mousePressed(displayWords);
+  //enter_button = createButton('enter');
+  //enter_button.position(410, 375);
+  //enter_button.mousePressed(displayWords);
   
   initCaptureDevice(); // and access to the camera
 
