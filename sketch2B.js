@@ -24,14 +24,18 @@ function initCaptureDevice() {
 // handles a new word entered in text box
 function displayWords() {
   new_word = input.value();
-
+  
+  let numZoneLocations = words.length;
+    
+  zoneLocation = Math.floor(Math.random() * numZoneLocations); 
+  
   words[zoneLocation].switchWord(new_word);
 
-  zoneLocation = zoneLocation + 1;
+  //zoneLocation = zoneLocation + 1;
   
-  if (zoneLocation > words.length - 1) {
-    zoneLocation = 0; 
-  }
+  //if (zoneLocation > words.length - 1) {
+    //zoneLocation = 0; 
+  //}
 }
 
 function WordZone(x, y) {
