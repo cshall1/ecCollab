@@ -25,13 +25,18 @@ function initCaptureDevice() {
 function displayWords() {
   new_word = input.value();
 
+  
+  let numZoneLocations = words.length;
+  
+  zoneLocation = Math.floor(Math.random() * numZoneLocations);  
+  
   words[zoneLocation].switchWord(new_word);
 
-  zoneLocation = zoneLocation + 1;
+  //zoneLocation = zoneLocation + 1;
   
-  if (zoneLocation > words.length - 1) {
-    zoneLocation = 0; 
-  }
+  //if (zoneLocation > words.length - 1) {
+    //zoneLocation = 0; 
+  //}
 }
 
 function WordZone(x, y) {
@@ -118,7 +123,9 @@ function setup() {
   for(var z = 0; z < myVida.activeZones.length; z++) {
     temp_x = Math.floor(myVida.activeZones[z].normX * temp_drawing_w);
     temp_y = Math.floor(myVida.activeZones[z].normY * temp_drawing_h);
-    words.push(new WordZone(temp_x, temp_y));
+    words.push(
+      new WordZone(temp_x, temp_y)
+    );
   }
 }
 
