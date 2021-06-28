@@ -3,10 +3,8 @@ var myCapture, // camera
 var synth = [];
 let words = [];
 let new_word = "";
-var word_displayed = true;
 var enter_button;
 var zoneLocation = 0;
-var clearButton;
 
 function initCaptureDevice() {
   try {
@@ -46,7 +44,6 @@ function displayWords() {
 
     words[zoneLocation].switchWord(new_word);
   
-  
   //zoneLocation = zoneLocation + 1;
   
   //if (zoneLocation > words.length - 1) {
@@ -55,9 +52,7 @@ function displayWords() {
 }
 
 function clearInputField() {
-  
     new_word = input.value('');
-  
 }
 
 function WordZone(x, y) {
@@ -77,9 +72,9 @@ function WordZone(x, y) {
 
 function setup() {
   createCanvas(640, 480); // we need some space...
-  
+    
   input = createInput();
-  input.position(255, 375);
+  input.position(255, 420);
   
   //enter_button = createButton('enter');
   //enter_button.position(410, 375);
@@ -217,5 +212,5 @@ function draw() {
   fill(255);
   textSize(20);
   textAlign(CENTER);
-  text("In one word, describe a feeling or sensation\nthat you are experiencing in your body right now", 315, 90);
+  text("In one word, describe a feeling or sensation\nthat you are experiencing in your body right now", 315, 150);
 }

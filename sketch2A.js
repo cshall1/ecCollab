@@ -21,22 +21,38 @@ function initCaptureDevice() {
   }
 }
 
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    displayWords();
+  }
+  
+  if (keyCode === DELETE) {
+    clearInputField();
+  }
+}
+
+
 // handles a new word entered in text box
-function displayWords() {
-  new_word = input.value();
+function displayWords() {  
+    
+    new_word = input.value();
 
-  
-  let numZoneLocations = words.length;
-  
-  zoneLocation = Math.floor(Math.random() * numZoneLocations);  
-  
-  words[zoneLocation].switchWord(new_word);
+    let numZoneLocations = words.length;
 
+    zoneLocation = Math.floor(Math.random() * numZoneLocations); 
+
+    words[zoneLocation].switchWord(new_word);
+  
   //zoneLocation = zoneLocation + 1;
   
   //if (zoneLocation > words.length - 1) {
     //zoneLocation = 0; 
   //}
+}
+
+function clearInputField() {
+    new_word = input.value('');
 }
 
 function WordZone(x, y) {
@@ -56,13 +72,13 @@ function WordZone(x, y) {
 
 function setup() {
   createCanvas(640, 480); // we need some space...
-  
+    
   input = createInput();
-  input.position(255, 375);
+  input.position(255, 420);
   
-  enter_button = createButton('enter');
-  enter_button.position(410, 375);
-  enter_button.mousePressed(displayWords);
+  //enter_button = createButton('enter');
+  //enter_button.position(410, 375);
+  //enter_button.mousePressed(displayWords);
   
   initCaptureDevice(); // and access to the camera
 
@@ -123,9 +139,7 @@ function setup() {
   for(var z = 0; z < myVida.activeZones.length; z++) {
     temp_x = Math.floor(myVida.activeZones[z].normX * temp_drawing_w);
     temp_y = Math.floor(myVida.activeZones[z].normY * temp_drawing_h);
-    words.push(
-      new WordZone(temp_x, temp_y)
-    );
+    words.push(new WordZone(temp_x, temp_y));
   }
 }
 
@@ -197,5 +211,5 @@ function draw() {
   
   fill(255);
   textSize(20);
-  text('In one word, describe what whiteness means to you', 125, 100);
+  text('In one word, describe what whiteness means to you', 125, 150);
 }
