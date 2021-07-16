@@ -25,10 +25,7 @@ function initCaptureDevice() {
 function keyPressed() {
   if (keyCode === ENTER) {
     displayWords();
-  }
-  
-  if (keyCode === DELETE) {
-    clearInputField();
+    input.elt.value = "";
   }
 }
 
@@ -51,10 +48,6 @@ function displayWords() {
   //}
 }
 
-function clearInputField() {
-    new_word = input.value('');
-}
-
 function WordZone(x, y) {
   //word in the slot
   this.wordCharString = "";
@@ -75,6 +68,9 @@ function setup() {
     
   input = createInput();
   input.position(255, 420);
+  
+  let inputElement = input.elt;
+  inputElement.focus();
   
   //enter_button = createButton('enter');
   //enter_button.position(410, 375);

@@ -48,6 +48,10 @@ function displayWords() {
   //}
 }
 
+function clearInputField() {
+    new_word = input.value('');
+}
+
 function WordZone(x, y) {
   //word in the slot
   this.wordCharString = "";
