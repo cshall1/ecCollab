@@ -5,6 +5,7 @@ let words = [];
 let new_word = "";
 var enter_button;
 var zoneLocation = 0;
+var resetTime = 0;
 
 function initCaptureDevice() {
   try {
@@ -48,8 +49,9 @@ function displayWords() {
   //}
 }
 
-function WordZone(x, y) {
+function WordZone(x, y /*initialWord*/) {
   //word in the slot
+ // this.wordCharString = initialWord;
   this.wordCharString = "";
   this.x = x;
   this.y = y;
@@ -128,6 +130,7 @@ function setup() {
 
   frameRate(30); // set framerate
   
+ //let wordStrings = ["power", "priviledge", "fear", "police", "fragility", "invisibility", "responsibility", "lies", "justice", "shame", "guilt", "equity", "violence", "action", "pain"];
   
   // Creates a word for each zone
   var temp_drawing_w = width;  var temp_drawing_h = height;
@@ -135,7 +138,7 @@ function setup() {
   for(var z = 0; z < myVida.activeZones.length; z++) {
     temp_x = Math.floor(myVida.activeZones[z].normX * temp_drawing_w);
     temp_y = Math.floor(myVida.activeZones[z].normY * temp_drawing_h);
-    words.push(new WordZone(temp_x, temp_y));
+    words.push(new WordZone(temp_x, temp_y /*wordStrings[z]*/));
   }
 }
 
@@ -155,7 +158,7 @@ function draw() {
     push(); // store current drawing style and font
     translate(offset_x, offset_y); // translate coords
     // set text style and font
-    textFont('Helvetica', 40); textAlign(CENTER); textStyle(NORMAL);
+    textFont('Helvetica', 15); textAlign(CENTER); textStyle(NORMAL);
     // let's iterate over all active zones
     for(var i = 0; i < myVida.activeZones.length; i++) {
       
@@ -208,4 +211,7 @@ function draw() {
   fill(255);
   textSize(20);
   text('In one word, describe what whiteness means to you', 125, 150);
+  if (millis() > resetTime + 120000) {
+    window.location.href = "stage2B.html";
+  }
 }

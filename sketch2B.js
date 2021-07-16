@@ -5,6 +5,7 @@ let words = [];
 let new_word = "";
 var enter_button;
 var zoneLocation = 0;
+var resetTime = 0;
 
 function initCaptureDevice() {
   try {
@@ -48,6 +49,10 @@ function displayWords() {
   //}
 }
 
+function clearInputField() {
+    new_word = input.value('');
+}
+
 function WordZone(x, y) {
   //word in the slot
   this.wordCharString = "";
@@ -68,7 +73,7 @@ function setup() {
     
   input = createInput();
   input.position(255, 420);
-  
+    
   let inputElement = input.elt;
   inputElement.focus();
   
@@ -155,7 +160,7 @@ function draw() {
     push(); // store current drawing style and font
     translate(offset_x, offset_y); // translate coords
     // set text style and font
-    textFont('Helvetica', 40); textAlign(CENTER); textStyle(NORMAL);
+    textFont('Helvetica', 15); textAlign(CENTER); textStyle(NORMAL);
     // let's iterate over all active zones
     for(var i = 0; i < myVida.activeZones.length; i++) {
       
@@ -209,4 +214,7 @@ function draw() {
   textSize(20);
   textAlign(CENTER);
   text("In one word, describe a feeling or sensation\nthat you are experiencing in your body right now", 315, 150);
+  if (millis() > resetTime + 120000) {
+    window.location.href = "stage3.html";
+  }
 }
