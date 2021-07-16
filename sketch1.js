@@ -11,17 +11,20 @@ function draw() {
   if (mode == 0) {
     screen1();
     //yes 
-    /*
     if ((keyIsPressed == true) && (key == 'y')) {
-      
+      mode = 1;
     }
-    */
     //no
     if ((keyIsPressed == true) && (key == 'n')) {
       mode = 2;
     }
   } 
-//if yes selected, immediately begin phase 2A
+  //yes
+  if (mode == 1) {
+    screen2();
+    //if enter button pressed, immediately begin phase 2A
+  }
+  
   //no
   if (mode == 2) {
     screen3();
@@ -49,6 +52,23 @@ function screen1() {
   
   textSize(40);
   text("no", 520, 300);
+}
+
+function screen2() {
+  fill(255);
+  textSize(30);
+  textAlign(CENTER);
+  text("How to Interact with this Installation:", 315, 50);
+
+  fill(255);
+  textSize(20);
+  textAlign(CENTER);
+  text("Enter as many words as you'd like into the text input bar\n\nMove your body around the space to\nactivate sounds and words on the screen", 315, 150);
+
+  fill(255);
+  textSize(20);
+  textAlign(CENTER);
+  text("Press 'enter' on the keyboard when you are done\nreading the instructions and ready to continue", 315, 350);
 }
 
 function screen3() {
