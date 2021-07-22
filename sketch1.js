@@ -68,7 +68,7 @@ function screen2() {
   fill(255);
   textSize(20);
   textAlign(CENTER);
-  text("Enter as many words as you'd like into the text input bar\n\nMove your body around the space to\nactivate sounds and words on the screen", 315, 150);
+  text("Enter as many words as you'd like into ssthe text input bar\n\nMove your body around the space to\nactivate sounds and words on the screen", 315, 150);
 
   fill(255);
   textSize(20);
